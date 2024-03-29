@@ -2,7 +2,7 @@
 This is a Image Editing gui application for windows.
 Build Dependencies:
 ```
-QT 
+QT, CUDA, OPENCV
 ```
 
 Preview:
