@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Image_Editor VERSION 0.1 LANGUAGES CXX)
+project(ImageEditor VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -22,7 +22,7 @@ set(PROJECT_SOURCES
 
 # OpenCV settings
 set(OpenCV_DIR C:/LIBRARY/OpenCV)
-set(OpenCV_CUDA ON)
+# set(OpenCV_CUDA ON)
 set(OpenCV_STATIC ON)
 
 find_package(OpenCV REQUIRED PATHS ${OpenCV_DIR} NO_DEFAULT_PATH)

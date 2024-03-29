@@ -54,12 +54,18 @@ private:
 
     QMenu *fileMenu;
     QMenu *viewMenu;
+
+    QMenu *colorMenu;
     QMenu *basicMenu;
     QMenu *advanceMenu;
+    QMenu *extraMenu;
 
 
     QToolBar *fileToolBar;
     QToolBar *viewToolBar;
+
+    QToolBar *extraToolBar;
+    QToolBar *colorToolBar;
     QToolBar *basicToolBar;
     QToolBar *advanceToolBar;
 

@@ -23,16 +23,22 @@ void Editor::initUI()
     this->resize(1024, 768);
 
     // setup menubar
-    fileMenu = menuBar() -> addMenu("&FILE");
-    viewMenu = menuBar() -> addMenu("&VIEW");
-    basicMenu = menuBar() -> addMenu("&BASIC");
-    advanceMenu = menuBar() -> addMenu("&ADVANCE");
+    fileMenu = menuBar()->addMenu("&FILE");
+    viewMenu = menuBar()->addMenu("&VIEW");
+
+    basicMenu = menuBar()->addMenu("&BASIC");
+    colorMenu =  menuBar()->addMenu("&COLORS");
+    advanceMenu = menuBar()->addMenu("&ADVANCE");
+    extraMenu = menuBar()->addMenu("&EXTRAS");
 
     // setup toolbar
     fileToolBar = addToolBar("file");
     viewToolBar = addToolBar("view");
+
     basicToolBar = addToolBar("basic");
-    advanceToolBar = addToolBar("&advance");
+    colorToolBar = addToolBar("colors");
+    advanceToolBar = addToolBar("advance");
+    extraToolBar = addToolBar("extras");
 
 
     // main area for image display
@@ -220,6 +226,7 @@ void Editor::rotateLeft(){
 void Editor::load(QString &path, QMenu *nameMenu, QToolBar *nameToolbar)
 {
     QDir plugin_directory(path);
+    // qDebug() << plugin_directory;
 
     QStringList nameFilters = {"*.so", "*.dylib", "*.dll"};
     QFileInfoList plugins = plugin_directory.entryInfoList(nameFilters, QDir::NoDotAndDotDot | QDir::Files, QDir::Name);
@@ -251,11 +258,20 @@ void Editor::load(QString &path, QMenu *nameMenu, QToolBar *nameToolbar)
 
 void Editor::loadPlugins(){
 
-    QString basic_dll = "D:/QTFramework/PROJECTS/image_Editor/plugin/Basics";
+    QString currentDir = QCoreApplication::applicationDirPath();
+    // qDebug() << currentDir;
+
+    QString basic_dll = currentDir + "/plugins/basics";
     load(basic_dll, basicMenu, basicToolBar);
 
-    QString advance_dll = "D:/QTFramework/PROJECTS/image_Editor/plugin/Advance";
+    QString colors_dll = currentDir + "/plugins/colors";
+    load(colors_dll, colorMenu, colorToolBar);
+
+    QString advance_dll = currentDir + "/plugins/advance";
     load(advance_dll, advanceMenu, advanceToolBar);
+
+    QString gray_dll = currentDir + "/plugins/extras";
+    load(gray_dll, extraMenu, extraToolBar);
 
 }
 
